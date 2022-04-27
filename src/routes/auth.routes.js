@@ -10,4 +10,5 @@ router.post('/signin', validate(auth.signin), authController.signin);
 router.post('/forgot-password', validate(auth.forgotPassword), authController.forgotPassword);
 router.post('/:token/reset-password', validate(auth.resetPassword), authController.resetPassword);
 router.post('/refresh-token', validate(auth.refreshToken), authController.refreshToken);
+router.post('/custom-auth-with-instagram', authController.customAuthWithInstagram);
 module.exports.auth = router;

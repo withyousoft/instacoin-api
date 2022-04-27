@@ -3,6 +3,7 @@ const { list } = require('./list.service');
 const { get } = require('./get.service');
 const { update } = require('./update.service');
 const { destroy } = require('./destroy.service');
+const { getByInstagramId } = require('./getByInstagramId.service');
 
 module.exports = {
   list,
@@ -10,4 +11,5 @@ module.exports = {
   create,
   update,
   destroy,
+  getByInstagramId,
 };

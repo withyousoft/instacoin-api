@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { catchAsync } = require('../utils');
-const { authService } = require('../services');
+const { authService, usersService } = require('../services');
 
 module.exports = {
   signin: catchAsync(async (req, res) => {
@@ -28,5 +28,15 @@ module.exports = {
     } = req;
     await authService.resetPassword(token, newPassword);
     return res.status(StatusCodes.NO_CONTENT).end();
+  }),
+
+  customAuthWithInstagram: catchAsync(async (req, res) => {
+    const { instagramId, instagramUsername } = req.body;
+    const existedUser = await usersService.getByInstagramId(instagramId);
+    if (!existedUser) {
+      await usersService.create({ name: instagramUsername, email: instagramId, password: instagramId });
+    }
+    const response = await authService.signin(instagramId, instagramId);
+    return res.status(StatusCodes.OK).json(response);
   }),
 };

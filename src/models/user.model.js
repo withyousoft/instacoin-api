@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     return user;
   });
 
-  User.prototype.toJSON = function() {
+  User.prototype.toJSON = function () {
     const user = { ...this.get() };
     return Object.fromEntries(Object.entries(user).filter(([key]) => !['password'].includes(key)));
   };

@@ -8,5 +8,5 @@ module.exports = {
   password: process.env.DB_PASS,
   database: process.env.NODE_ENV !== 'test' ? process.env.DB_NAME : `${process.env.DB_NAME}-test`,
   host: process.env.DB_HOST,
-  dialect: 'postgres',
+  dialect: 'mysql',
 };
